@@ -1,0 +1,333 @@
+const fs = require('fs');
+
+const svgPaths = {
+  Globe: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>`,
+  ShieldCheck: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>`,
+  Zap: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>`,
+  Activity: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>`,
+  Database: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-database"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>`,
+  BarChart3: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-bar-chart-3"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>`,
+  Cpu: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-cpu text-purple-500 w-8 h-8"><rect width="16" height="16" x="4" y="4" rx="2" ry="2"/><rect width="8" height="8" x="8" y="8" rx="1" ry="1"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M17 2v2"/><path d="M17 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M2 7h2"/><path d="M20 7h2"/><path d="M2 17h2"/><path d="M20 17h2"/><path d="M7 2v2"/><path d="M7 20v2"/></svg>`,
+  TrendingUp: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`,
+  Layout: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-layout"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
+  Monitor: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-monitor"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`,
+  Workflow: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-workflow"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>`,
+  Users: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-users text-blue-500 w-8 h-8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  Smartphone: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`,
+  Link: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
+  CreditCard: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>`,
+  Settings: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  X: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`,
+  Network: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-network text-green-500 w-8 h-8"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>`,
+  ArrowRight: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-arrow-right icon-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`
+};
+
+const productDetails = {
+    "MT OTA": {
+      id: "mt-ota",
+      name: "MT OTA",
+      shortDesc: "A global travel marketplace engineered for seamless discovery, secure payments, and intelligent booking experiences.",
+      title: "The Intelligence Layer Behind Modern Travel",
+      heroDescription: "Built for the globally mobile traveler, our marketplace integrates real-time availability, transparent pricing, secure multi-currency transactions, and instant confirmations into a frictionless digital journey.",
+      corePositioning: "MyTravaly OTA is not just a booking site. It is a demand-side operating system designed for trust, speed, and global scale.",
+      deployment: "Next.js",
+      features: [
+        { title: "Global Inventory", content: "Access verified properties across 190+ countries.", icon: svgPaths.Globe },
+        { title: "Secure Payments", content: "Multi-currency checkout with instant confirmation.", icon: svgPaths.ShieldCheck },
+        { title: "Smart Comparison", content: "AI-driven price and value intelligence for travelers.", icon: svgPaths.Zap },
+        { title: "Instant Confirmation", content: "Real-time sync with global property inventory.", icon: svgPaths.Activity }
+      ],
+      stats: [
+        { label: "Active Travelers", value: "1M+" },
+        { label: "Verified Stays", value: "10,000+" },
+        { label: "Markets", value: "Global" }
+      ],
+      cta: "Explore Global Stays",
+      ctaLink: "https://mytravaly.in",
+      color: "blue",
+      logoType: "img",
+      logoContent: `<img src="https://dwq3yv87q1b43.cloudfront.net/public/static/logo/logov1.png" alt="MT OTA" class="logo-img-contain" />`
+    },
+    "Swoovo": {
+      id: "swoovo",
+      name: "Swoovo",
+      shortDesc: "An intelligent supply aggregation engine powering OTAs and travel enterprises with scalable, margin-optimized inventory.",
+      title: "Intelligent Supply. Optimized Margins.",
+      heroDescription: "Swoovo is a high-performance supply intelligence engine that aggregates, normalizes, and optimizes hotel inventory across global sources for travel enterprises.",
+      corePositioning: "Built for OTAs and travel platforms, Swoovo enhances rate competitiveness and enables scalable expansion into new markets.",
+      deployment: "Next.js",
+      features: [
+        { title: "Supply Aggregation", content: "Unified access to global hotel inventory sources.", icon: svgPaths.Database },
+        { title: "Margin Optimization", content: "Real-time pricing intelligence to maximize profitability.", icon: svgPaths.BarChart3 },
+        { title: "API Connectivity", content: "High-speed, low-latency infrastructure for enterprises.", icon: svgPaths.Cpu },
+        { title: "Market Expansion", content: "Instant access to new regions without operational overhead.", icon: svgPaths.Globe }
+      ],
+      stats: [
+        { label: "API Uptime", value: "99.99%" },
+        { label: "Latency", value: "< 200ms" },
+        { label: "Inventory", value: "Global" }
+      ],
+      cta: "Integrate Supply Intelligence",
+      ctaLink: "https://swoovo.com",
+      secondaryCta: "Request API Access",
+      secondaryCtaLink: "https://swoovo.com",
+      color: "blue",
+      logoType: "img",
+      logoContent: `<img src="https://dwq3yv87q1b43.cloudfront.net/public/static/images/SwoovoIcon.png" alt="Swoovo" class="logo-img-contain" />`
+    },
+    "HBC": {
+      id: "hbc",
+      name: "HBC",
+      shortDesc: "AI-driven revenue intelligence and business optimization platform for modern hospitality operators.",
+      title: "Predict. Optimize. Lead.",
+      heroDescription: "HBC leverages AI-driven forecasting, automated pricing intelligence, and performance analytics to empower hospitality leaders with real-time decision clarity.",
+      corePositioning: "From demand prediction to operational efficiency, every insight is designed to increase profitability and strategic control.",
+      deployment: "React.js",
+      features: [
+        { title: "Revenue Intelligence", content: "AI-driven forecasting and dynamic pricing tools.", icon: svgPaths.TrendingUp },
+        { title: "Business Analytics", content: "Deep insights into property performance and market trends.", icon: svgPaths.BarChart3 },
+        { title: "Operational Efficiency", content: "Automated workflows to reduce overhead and errors.", icon: svgPaths.Zap },
+        { title: "Strategic Control", content: "Unified dashboard for multi-property management.", icon: svgPaths.Layout }
+      ],
+      stats: [
+        { label: "Revenue Lift", value: "+24%" },
+        { label: "Efficiency Gain", value: "40%" },
+        { label: "Decision Speed", value: "Real-time" }
+      ],
+      cta: "Activate Revenue Intelligence",
+      ctaLink: "https://hbc.mytravaly.com/",
+      secondaryCta: "Schedule a Demo",
+      secondaryCtaLink: "https://forms.zohopublic.in/mytravalyworldwide/form/FreeEarlyAccessofMyTravalyPMS/formperma/d_hojjKjD9B_xduU353pF9jXFNICJKkj6cJlbw5sN5g",
+      color: "purple",
+      logoType: "svg",
+      logoContent: svgPaths.BarChart3
+    },
+    "Unified PMS": {
+      id: "unified-pms",
+      name: "Unified PMS",
+      shortDesc: "A cloud-native property management system built for operational precision and scalability.",
+      title: "Operational Control, Without Complexity",
+      heroDescription: "A unified cloud-based PMS designed to streamline reservations, inventory management, staff coordination, and guest lifecycle management.",
+      corePositioning: "Designed for single properties and multi-unit portfolios. Automation reduces friction. Intelligence improves performance.",
+      deployment: "React.js",
+      features: [
+        { title: "Cloud-Native PMS", content: "Access your property operations from anywhere, anytime.", icon: svgPaths.Monitor },
+        { title: "Reservation Engine", content: "Seamless booking management across all channels.", icon: svgPaths.Workflow },
+        { title: "Staff Coordination", content: "Integrated tools for housekeeping and front-desk efficiency.", icon: svgPaths.Users },
+        { title: "Guest Lifecycle", content: "From check-in to check-out, a unified guest experience.", icon: svgPaths.Smartphone }
+      ],
+      stats: [
+        { label: "Time Saved", value: "40%" },
+        { label: "Error Reduction", value: "95%" },
+        { label: "Scalability", value: "Unlimited" }
+      ],
+      cta: "Experience Operational Mastery",
+      ctaLink: "https://hbc.mytravaly.com/",
+      secondaryCta: "Request a Trial",
+      secondaryCtaLink: "https://forms.zohopublic.in/mytravalyworldwide/form/FreeEarlyAccessofMyTravalyPMS/formperma/d_hojjKjD9B_xduU353pF9jXFNICJKkj6cJlbw5sN5g",
+      color: "purple",
+      logoType: "svg",
+      logoContent: svgPaths.Settings
+    },
+    "StayConfirm": {
+      id: "stayconfirm",
+      name: "StayConfirm",
+      shortDesc: "Direct booking technology that transforms hotel websites into high-performance revenue channels.",
+      title: "Own the Relationship. Protect the Margin.",
+      heroDescription: "StayConfirm empowers hotels to capture direct bookings through secure, real-time availability and multi-currency checkout.",
+      corePositioning: "With automated settlements and conversion-focused flows, hotels regain control of distribution and profitability.",
+      deployment: "React.js",
+      features: [
+        { title: "Direct Booking Engine", content: "Convert website visitors into confirmed guests.", icon: svgPaths.Link },
+        { title: "Automated Settlement", content: "Instant payment processing and secure payouts.", icon: svgPaths.CreditCard },
+        { title: "Refund Management", content: "Structured, automated refund protocols for trust.", icon: svgPaths.ShieldCheck },
+        { title: "Conversion Focus", content: "Optimized checkout flow to reduce abandonment.", icon: svgPaths.Zap }
+      ],
+      stats: [
+        { label: "Direct Growth", value: "3.2x" },
+        { label: "Margin Gain", value: "+12%" },
+        { label: "Settlement", value: "Same-Day" }
+      ],
+      cta: "Strengthen Direct Revenue",
+      ctaLink: "https://stayconfirm.com/",
+      color: "green",
+      logoType: "svg",
+      logoContent: svgPaths.ShieldCheck
+    },
+    "MT Gateway": {
+      id: "mt-gateway",
+      name: "MT Gateway",
+      shortDesc: "A monetization infrastructure empowering travel creators and agents to build independent revenue businesses.",
+      title: "Build a Scalable Travel Revenue Engine",
+      heroDescription: "MT Gateway provides creators and independent agents with access to global inventory, customizable markups, and instant confirmations.",
+      corePositioning: "Built for the decentralized travel economy — eliminating contract dependency and payment delays.",
+      deployment: "Flutter",
+      features: [
+        { title: "Inventory Access", content: "Promote 10,000+ verified properties worldwide.", icon: svgPaths.Globe },
+        { title: "E-Cash System", content: "Instant confirmations and seamless payment handling.", icon: svgPaths.Zap },
+        { title: "Markup Control", content: "Define your own margins and business model.", icon: svgPaths.TrendingUp },
+        { title: "Transparent Earnings", content: "Real-time tracking and automated payouts.", icon: svgPaths.ShieldCheck }
+      ],
+      stats: [
+        { label: "Network Size", value: "5,000+" },
+        { label: "Payout Speed", value: "Automated" },
+        { label: "Global Reach", value: "190+ Countries" }
+      ],
+      cta: "Launch Your Travel Business",
+      ctaLink: "https://play.google.com/store/apps/details?id=com.mytravaly.mytravaly_ta&pcampaignid=web_share",
+      color: "green",
+      logoType: "svg",
+      logoContent: svgPaths.CreditCard
+    }
+};
+
+const pillars = [
+    {
+      title: "Demand",
+      icon: svgPaths.Users,
+      products: ["MT OTA", "Swoovo"]
+    },
+    {
+      title: "Operations",
+      icon: svgPaths.Cpu,
+      products: ["Unified PMS", "HBC"]
+    },
+    {
+      title: "Distribution & Revenue",
+      icon: svgPaths.Network,
+      products: ["StayConfirm", "MT Gateway"]
+    }
+];
+
+let html = `
+<section id="platform" class="platform-section">
+  <div class="platform-container">
+    <div class="platform-header text-center sm:text-left">
+      <h2 class="platform-title">One Platform. Multiple Growth Engines.</h2>
+      <div class="platform-subtitle">
+        <p class="font-bold text-brand-blue">MyTravaly is not a single solution.</p>
+        <p>It is a connected travel operating system powering distribution, operations, payments, and revenue intelligence.</p>
+      </div>
+    </div>
+
+    <div class="platform-grid">
+`;
+
+pillars.forEach(pillar => {
+    html += `
+      <div class="platform-pillar">
+        <div class="pillar-header">
+          <div class="pillar-icon">${pillar.icon}</div>
+          <h3 class="pillar-title">${pillar.title}</h3>
+        </div>
+        <div class="products-list">
+    `;
+    pillar.products.forEach(pName => {
+        const product = productDetails[pName];
+        html += `
+          <div class="product-card">
+            <div class="product-card-hover-border"></div>
+            <h4 class="product-name">${product.name}</h4>
+            <p class="product-desc">${product.shortDesc}</p>
+            <button class="btn-learn-more" data-product-id="${product.name}">
+              Learn More ${svgPaths.ArrowRight}
+            </button>
+          </div>
+        `;
+    });
+    html += `
+        </div>
+      </div>
+    `;
+});
+
+html += `
+    </div>
+  </div>
+
+  <!-- Reusable Modal (Hidden by Default) -->
+  <div id="product-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="modal-close" class="modal-close-btn">
+          ${svgPaths.X}
+        </button>
+      </div>
+
+      <div class="modal-body-scrollable">
+        <div class="modal-grid">
+          <!-- Left Column: Content -->
+          <div class="modal-main-col">
+            <div class="modal-product-header">
+              <div id="modal-logo" class="modal-logo-wrapper">
+                <!-- Logo injected via JS -->
+              </div>
+              <div class="modal-titles">
+                <h3 id="modal-product-name" class="modal-name">Product Name</h3>
+                <p id="modal-product-title" class="modal-tagline">Tagline</p>
+              </div>
+            </div>
+            
+            <p id="modal-hero-desc" class="modal-hero-text">Description</p>
+            
+            <div class="modal-intent-box">
+              <h4 class="modal-small-label">Strategic Intent</h4>
+              <p id="modal-core-positioning" class="modal-intent-text">Positioning</p>
+            </div>
+
+            <div class="modal-capabilities">
+              <div class="modal-cap-header">
+                <span class="modal-small-label">Technical Capabilities</span>
+                <div class="modal-divider"></div>
+              </div>
+              <div id="modal-features-grid" class="modal-features-grid">
+                <!-- Features injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Metrics & Actions -->
+          <div class="modal-sidebar-col">
+            <div class="modal-status-section">
+              <h4 class="modal-small-label">Operational Status</h4>
+              <div class="modal-status-list">
+                <div class="status-item">
+                  <span class="status-label">Deployment</span>
+                  <span id="modal-deployment" class="status-val">...</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">Architecture</span>
+                  <span class="status-val">Cloud-Native</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">Security</span>
+                  <span class="status-val">PCI DSS / GDPR</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">Uptime</span>
+                  <span class="status-val">99.99% SLA</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-metrics-section">
+              <h4 class="modal-small-label">Performance Metrics</h4>
+              <div id="modal-stats-list" class="modal-stats-list">
+                <!-- Stats injected via JS -->
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <a id="modal-cta-primary" href="#" target="_blank" rel="noopener noreferrer" class="modal-btn-primary">CTA</a>
+              <a id="modal-cta-secondary" href="#" target="_blank" rel="noopener noreferrer" class="modal-btn-secondary hidden">Secondary CTA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+fs.writeFileSync('PlatformOverview.html', html);
+console.log('PlatformOverview.html generated.');
