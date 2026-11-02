@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyTravaly | Hotel Booking, PMS & Global Travel Platform</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://dwq3yv87q1b43.cloudfront.net/public/static/logo/logov1.png"
+    />
     <!-- Google Fonts for Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -247,10 +252,10 @@
         </div>
       </div>
 
-      <div class="hero-scroll hero-scroll-entrance">
+      <!-- <div class="hero-scroll hero-scroll-entrance">
         <span>Scroll to Explore</span>
         <div class="scroll-line-gradient"></div>
-      </div>
+      </div> -->
     </header>
 
     <script>
@@ -3648,10 +3653,31 @@
             <!-- Hamlet Roy -->
             <div class="team-card group">
               <div class="team-card-image">
+                <img src="https://dwq3yv87q1b43.cloudfront.net/public/static/images/9b0dafa9b422e451679202f2ab0e2d93.png" alt="Hamlet Roy" class="team-img-el" referrerpolicy="no-referrer">
+                <div class="team-overlay"></div>
+                <div class="team-lnk-wrap">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/iamhamlet/" class="team-lnk-btn">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Hamlet Roy</h3>
+                <div class="team-role">Founder &amp; Group CEO</div>
+                <div class="team-line"></div>
+              </div>
+            </div>
+
+            <!-- Sabuj Kumar Mandal -->
+            <div class="team-card group">
+              <div class="team-card-image">
                 <img
-                  src="https://dwq3yv87q1b43.cloudfront.net/public/static/images/hamlet.png"
-                  alt="Hamlet Roy"
+                  src="https://dwq3yv87q1b43.cloudfront.net/mytravaly-bangladesh/static/images/avatar/sabujkumarmandal.png"
+                  alt="Sabuj Kumar Mandal"
                   class="team-img-el"
+                  style="object-position: center 10%;"
                   referrerpolicy="no-referrer"
                 />
                 <div class="team-overlay"></div>
@@ -3659,7 +3685,7 @@
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.linkedin.com/in/iamhamlet/"
+                    href="https://www.linkedin.com/in/sobuj-k-mondal"
                     class="team-lnk-btn"
                   >
                     <svg
@@ -3677,8 +3703,8 @@
                 </div>
               </div>
               <div class="team-info">
-                <h3 class="team-name">Hamlet Roy</h3>
-                <div class="team-role">Founder & Group CEO</div>
+                <h3 class="team-name">Sabuj Kumar Mandal</h3>
+                <div class="team-role">CEO, MyTravaly Bangldesh</div>
                 <div class="team-line"></div>
               </div>
             </div>
@@ -6330,378 +6356,119 @@
           padding-right: 1.5rem;
         "
       >
-        <div
-          class="flex flex-col md:flex-row justify-between items-start gap-12 mb-24"
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 6rem;
-          "
-          id="footer-top-container"
-        >
+        <div id="footer-top-container" style="margin-bottom: 6rem;">
           <style>
             #footer-top-container {
-              gap: 3rem;
-              flex-direction: row;
+              display: grid;
+              grid-template-columns: 1.5fr 1fr 1fr;
+              gap: 4rem;
+            }
+            @media (max-width: 1024px) {
+              #footer-top-container {
+                grid-template-columns: 1fr 1fr;
+              }
             }
             @media (max-width: 768px) {
               #footer-top-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 3rem;
               }
             }
+            .footer-heading {
+              color: #c5a059;
+              font-size: 0.75rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              margin-bottom: 1rem;
+              margin-top: 0;
+            }
+            .footer-address {
+              color: rgba(255, 255, 255, 0.6);
+              font-weight: 300;
+              line-height: 1.625;
+              font-size: 0.875rem;
+              font-style: normal;
+              margin: 0;
+            }
           </style>
-          <div class="max-w-sm" style="max-width: 24rem">
-            <div
-              class="flex items-center gap-2 mb-8"
-              style="
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                margin-bottom: 2rem;
-              "
-            >
-              <div
-                class="w-8 h-8 bg-brand-gold rounded-sm flex items-center justify-center"
-                style="
-                  width: 2rem;
-                  height: 2rem;
-                  background-color: #c5a059;
-                  border-radius: 0.125rem;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                "
-              >
-                <span
-                  class="text-brand-blue font-bold text-xl"
-                  style="color: #1e3a8a; font-weight: 700; font-size: 1.25rem"
-                  >M</span
-                >
+
+          <!-- Column 1: Brand & Socials -->
+          <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                <img
+                  src="https://dwq3yv87q1b43.cloudfront.net/public/static/logo/logov1.png"
+                  alt="MyTravaly Logo"
+                  style="width: 2.5rem; height: 2.5rem; object-fit: contain;"
+                />
+                <span style="font-weight: 700; font-size: 1.75rem; letter-spacing: -0.025em; color: white;">MyTravaly</span>
               </div>
-              <span
-                class="font-bold text-2xl tracking-tight text-white"
-                style="
-                  font-weight: 700;
-                  font-size: 1.5rem;
-                  letter-spacing: -0.025em;
-                  color: white;
-                "
-                >MyTravaly</span
-              >
+              <p style="color: rgba(255, 255, 255, 0.5); font-weight: 300; line-height: 1.625; font-size: 0.95rem; max-width: 24rem;">
+                The unified global infrastructure powering modern travel. Connecting travelers, hospitality leaders, and the creator economy.
+              </p>
             </div>
-            <p
-              class="text-white/40 font-light leading-relaxed"
-              style="
-                color: rgba(255, 255, 255, 0.4);
-                font-weight: 300;
-                line-height: 1.625;
-              "
-            >
-              The unified global infrastructure powering modern travel.
-              Connecting travelers, hospitality leaders, and the creator
-              economy.
-            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+              <a href="https://www.facebook.com/MyTravalyWorldwide" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all" style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; color: white;">
+                <span class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Facebook</span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>
+              </a>
+              <a href="https://www.instagram.com/mytravaly/" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all" style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; color: white;">
+                <span class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Instagram</span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+              </a>
+              <a href="https://www.youtube.com/@MyTravaly" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all" style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; color: white;">
+                <span class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">YouTube</span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+              </a>
+              <a href="https://in.pinterest.com/mytravaly/" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all" style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; color: white;">
+                <span class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Pinterest</span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg"><path d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"></path></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/mytravaly/" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all" style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; color: white;">
+                <span class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">LinkedIn</span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+              </a>
+              <a href="https://x.com/MyTravaly" target="_blank" rel="noopener noreferrer" class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all" style="width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; color: white;">
+                <span class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Twitter</span>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" style="width: 1.25rem; height: 1.25rem" xmlns="http://www.w3.org/2000/svg"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>
+              </a>
+            </div>
           </div>
 
-          <div
-            class="flex flex-wrap gap-4"
-            style="display: flex; flex-wrap: wrap; gap: 1rem"
-          >
-            <a
-              href="https://www.facebook.com/MyTravalyWorldwide"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
-              style="
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 9999px;
-                background-color: rgba(255, 255, 255, 0.05);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: white;
-              "
-            >
-              <span
-                class="sr-only"
-                style="
-                  position: absolute;
-                  width: 1px;
-                  height: 1px;
-                  padding: 0;
-                  margin: -1px;
-                  overflow: hidden;
-                  clip: rect(0, 0, 0, 0);
-                  white-space: nowrap;
-                  border-width: 0;
-                "
-                >Facebook</span
-              >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 512 512"
-                class="w-5 h-5"
-                style="width: 1.25rem; height: 1.25rem"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="https://www.instagram.com/mytravaly/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
-              style="
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 9999px;
-                background-color: rgba(255, 255, 255, 0.05);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: white;
-              "
-            >
-              <span
-                class="sr-only"
-                style="
-                  position: absolute;
-                  width: 1px;
-                  height: 1px;
-                  padding: 0;
-                  margin: -1px;
-                  overflow: hidden;
-                  clip: rect(0, 0, 0, 0);
-                  white-space: nowrap;
-                  border-width: 0;
-                "
-                >Instagram</span
-              >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 448 512"
-                class="w-5 h-5"
-                style="width: 1.25rem; height: 1.25rem"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="https://www.youtube.com/@MyTravaly"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
-              style="
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 9999px;
-                background-color: rgba(255, 255, 255, 0.05);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: white;
-              "
-            >
-              <span
-                class="sr-only"
-                style="
-                  position: absolute;
-                  width: 1px;
-                  height: 1px;
-                  padding: 0;
-                  margin: -1px;
-                  overflow: hidden;
-                  clip: rect(0, 0, 0, 0);
-                  white-space: nowrap;
-                  border-width: 0;
-                "
-                >YouTube</span
-              >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 576 512"
-                class="w-5 h-5"
-                style="width: 1.25rem; height: 1.25rem"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="https://in.pinterest.com/mytravaly/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
-              style="
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 9999px;
-                background-color: rgba(255, 255, 255, 0.05);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: white;
-              "
-            >
-              <span
-                class="sr-only"
-                style="
-                  position: absolute;
-                  width: 1px;
-                  height: 1px;
-                  padding: 0;
-                  margin: -1px;
-                  overflow: hidden;
-                  clip: rect(0, 0, 0, 0);
-                  white-space: nowrap;
-                  border-width: 0;
-                "
-                >Pinterest</span
-              >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 496 512"
-                class="w-5 h-5"
-                style="width: 1.25rem; height: 1.25rem"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/mytravaly/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
-              style="
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 9999px;
-                background-color: rgba(255, 255, 255, 0.05);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: white;
-              "
-            >
-              <span
-                class="sr-only"
-                style="
-                  position: absolute;
-                  width: 1px;
-                  height: 1px;
-                  padding: 0;
-                  margin: -1px;
-                  overflow: hidden;
-                  clip: rect(0, 0, 0, 0);
-                  white-space: nowrap;
-                  border-width: 0;
-                "
-                >LinkedIn</span
-              >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 448 512"
-                class="w-5 h-5"
-                style="width: 1.25rem; height: 1.25rem"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="https://x.com/MyTravaly"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
-              style="
-                width: 2.5rem;
-                height: 2.5rem;
-                border-radius: 9999px;
-                background-color: rgba(255, 255, 255, 0.05);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: white;
-              "
-            >
-              <span
-                class="sr-only"
-                style="
-                  position: absolute;
-                  width: 1px;
-                  height: 1px;
-                  padding: 0;
-                  margin: -1px;
-                  overflow: hidden;
-                  clip: rect(0, 0, 0, 0);
-                  white-space: nowrap;
-                  border-width: 0;
-                "
-                >Twitter</span
-              >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 512 512"
-                class="w-5 h-5"
-                style="width: 1.25rem; height: 1.25rem"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-                ></path>
-              </svg>
-            </a>
+          <!-- Column 2: India Offices -->
+          <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+            <div>
+              <h4 class="footer-heading">Global Headquarters</h4>
+              <address class="footer-address">
+                MyTravaly, 3rd Floor, Startup Park, Davanam Plaza, Hosur–Sarjapur Road Junction, Madivala, Adjacent to madivala police station, Bengaluru – 560068, Karnataka, India
+              </address>
+            </div>
+            <div>
+              <h4 class="footer-heading">Registered Office</h4>
+              <address class="footer-address">
+                Cabin-1, OD-03, Shilpa Ananya Tech Park 1st Floor, 3 AND 6, 9 KONAPPANA AGRAHARA, near Infosys Gate 1, Electronic City Phase I, Bengaluru, Karnataka 560100
+              </address>
+            </div>
+          </div>
+
+          <!-- Column 3: Global Offices -->
+          <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+            <div>
+              <h4 class="footer-heading">USA Office</h4>
+              <address class="footer-address">
+                Swoovo Meta Systems LLC<br/>
+                30 N Gould St. Sheridan, Wyoming 82801, USA
+              </address>
+            </div>
+            <div>
+              <h4 class="footer-heading">Bangladesh Office</h4>
+              <address class="footer-address">
+                MyTravaly Bangladesh Pvt Ltd<br/>
+                House: 998, Road: 9A, Avenue: 11, Mirpur DOHS, Dhaka – 1216
+              </address>
+            </div>
           </div>
         </div>
 

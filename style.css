@@ -981,7 +981,7 @@ a {
 @media (min-width: 1024px) {
   .quote-author-block {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
   }
 }
 .quote-avatar-wrapper {
